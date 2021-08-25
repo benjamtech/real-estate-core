@@ -1,30 +1,6 @@
-interface IWatcher {
-    caller: (state?: any) => void;
-    id: number;
-}
+import IStateContainer from "./IStateContainer"
+import StateIdCounter from "./StateIdCounterCls"
 
-interface IStateContainer {
-    description?: string;
-    watchers: IWatcher[];
-    data: any;
-}
-
-class StateIdCounter {
-    private static _instance: StateIdCounter;
-    private counter: number = 1;
-
-    public static getInstance() {
-        return this._instance || (this._instance = new this());
-    }
-
-    private constructor() {}
-
-    public getNewStateid(): number {
-        const id = this.counter;
-        this.counter = id + 1;
-        return id;
-    }
-}
 
 class RState<T> {
     private stateContainer: IStateContainer;
@@ -39,7 +15,7 @@ class RState<T> {
     constructor(initialValue: T, description?: string) {
         const container: IStateContainer = {
             data: initialValue,
-            description: description,
+            description,
             watchers: [],
         };
 
@@ -75,12 +51,6 @@ class RState<T> {
         });
     };
 
-    private getNewWatcherId = (): number => {
-        const watcherId = this.watcherIdIncrement;
-        this.watcherIdIncrement = watcherId + 1;
-        return watcherId;
-    };
-
     /**
      * Sets new functions to be callbacks for when the state changes. It watches the state
      * @param callback Sets the callback function to be called when states changes. The callback function is also called immediately, to ensure updated UI
@@ -111,6 +81,12 @@ class RState<T> {
         );
         this.stateContainer.watchers = filtered;
     };
+
+    private getNewWatcherId = (): number => {
+        const watcherId = this.watcherIdIncrement;
+        this.watcherIdIncrement = watcherId + 1;
+        return watcherId;
+    };
 }
 
 /**
@@ -120,7 +96,7 @@ class RState<T> {
  * @param initCall Calls the function only once, on creation in watch if true. Default false
  */
 function MultiWatcher(
-    stateArr: RState<any>[],
+    stateArr: Array<RState<any>>,
     callback: () => void,
     initCall = false
 ) {
