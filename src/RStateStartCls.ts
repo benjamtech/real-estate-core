@@ -1,6 +1,5 @@
-import IStateContainer from "./IStateContainer"
+import IStateContainer from "./IStateContainer";
 import StateIdCounter from "./StateIdCounterCls";
-
 
 class RState<T> {
     private stateContainer: IStateContainer;

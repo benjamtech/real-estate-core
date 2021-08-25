@@ -1,6 +1,6 @@
 {
   "name": "@real-estate/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple library to maintain state in JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

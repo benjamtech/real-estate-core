@@ -10,7 +10,6 @@ class StateIdCounter {
         return this.instance || (this.instance = new this());
     }
 
-
     public getNewStateid(): number {
         const id = this.counter;
         this.counter = id + 1;
@@ -18,4 +17,4 @@ class StateIdCounter {
     }
 }
 
-export default StateIdCounter
+export default StateIdCounter;

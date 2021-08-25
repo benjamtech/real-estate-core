@@ -3,4 +3,4 @@ interface IWatcher {
     id: number;
 }
 
-export default IWatcher
+export default IWatcher;
