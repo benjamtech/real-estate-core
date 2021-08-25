@@ -1,0 +1,45 @@
+{
+  "name": "@real-estate/core",
+  "version": "1.0.0",
+  "description": "A simple library to maintain state in JavaScript",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint --project tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjamtech/real-estate-core.git"
+  },
+  "keywords": [
+    "State",
+    "simple",
+    "real-estate"
+  ],
+  "author": "Benjam.Tech",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/benjamtech/real-estate-core/issues"
+  },
+  "homepage": "https://github.com/benjamtech/real-estate-core#readme",
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.5",
+    "ts-lint": "^4.5.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.3.5"
+  },
+  "files": [
+    "lib/**/*"
+  ]
+}
