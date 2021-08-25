@@ -1,7 +1,6 @@
 import IWatcher from "./IWatcher"
 
 interface IStateContainer {
-    description?: string;
     watchers: IWatcher[];
     data: any;
 }

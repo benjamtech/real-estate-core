@@ -12,10 +12,9 @@ class RState<T> {
      * @param initialValue Sets the initial value of the state
      * @param description An optional description of the state and what is does in the app
      */
-    constructor(initialValue: T, description?: string) {
+    constructor(initialValue: T) {
         const container: IStateContainer = {
             data: initialValue,
-            description,
             watchers: [],
         };
 
